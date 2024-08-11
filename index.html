@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="GPU.png" type="image/x-icon">
+    <title>GPU Clicker</title>
+</head>
+<body>
+    <div class="main-content">
+        <div class="Web-background"></div>
+        <div class="scoreboard">
+            <h1><span id="score">0</span> <img id="gpu" src="GPU.png" alt="GPU "></h1>
+        </div>
+        <div class="GPU-clicker">
+            <img src="GPU.png" id="clicker" alt="GPU">
+
+            <div id="floating-numbers"></div>
+        </div>
+    </div>
+    <div id="hats-container"></div>
+    <div class="sidebar right-sidebar">
+        <div class="tabs">
+            <div class="tab active" data-content="content1">Autoclicker</div>
+            <div class="tab" data-content="content2">Golden GPUs</div>
+            <div class="tab" data-content="content3">Multiplier</div>
+        </div>
+        <div class="tab-content" id="content1">
+            <div class="item-row" data-type="autoclicker" data-price="100" data-level="1">
+                <span>Level 1 Autoclicker</span>
+                <span class="price">100<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="autoclicker" data-price="300" data-level="2">
+                <span>Level 2 Autoclicker</span>
+                <span class="price">300<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="autoclicker" data-price="500" data-level="3">
+                <span>Level 3 Autoclicker</span>
+                <span class="price">500<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="autoclicker" data-price="1000" data-level="4">
+                <span>Level 4 Autoclicker</span>
+                <span class="price">1000<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="autoclicker" data-price="1500" data-level="5">
+                <span>Level 5 Autoclicker</span>
+                <span class="price">1500<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="autoclicker" data-price="2000" data-level="6">
+                <span>Level 6 Autoclicker</span>
+                <span class="price">2000<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="autoclicker" data-price="5000" data-level="7">
+                <span>Level 7 Autoclicker</span>
+                <span class="price">5000<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="autoclicker" data-price="10000" data-level="8">
+                <span>Level 8 Autoclicker</span>
+                <span class="price">10,000<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="autoclicker" data-price="50000" data-level="9">
+                <span>Level 9 Autoclicker</span>
+                <span class="price">50,000<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="autoclicker" data-price="100000" data-level="10">
+                <span>Level 10 Autoclicker</span>
+                <span class="price">100,000<img src="GPU.png" alt="GPU"></span>
+            </div>
+        </div>
+        <div class="tab-content" id="content2" style="display: none;">
+            <!-- Golden GPUs will be added here later -->
+            <p class="empty-message"><span>Will be added later</span></p>
+        </div>
+        <div class="tab-content" id="content3" style="display: none;">
+            <div class="item-row" data-type="multiplier" data-price="200" data-level="1">
+                <span>Level 1 Multiplier (2x)</span>
+                <span class="price">200<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="multiplier" data-price="500" data-level="2">
+                <span>Level 2 Multiplier (3x)</span>
+                <span class="price">500<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="multiplier" data-price="1000" data-level="3">
+                <span>Level 3 Multiplier (4x)</span>
+                <span class="price">1000<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="multiplier" data-price="2000" data-level="4">
+                <span>Level 4 Multiplier (4x)</span>
+                <span class="price">2000<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="multiplier" data-price="3000" data-level="5">
+                <span>Level 5 Multiplier (4x)</span>
+                <span class="price">3000<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="multiplier" data-price="4500" data-level="6">
+                <span>Level 6 Multiplier (4x)</span>
+                <span class="price">4500<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="multiplier" data-price="9000" data-level="7">
+                <span>Level 7 Multiplier (4x)</span>
+                <span class="price">9000<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="multiplier" data-price="12000" data-level="8">
+                <span>Level 8 Multiplier (4x)</span>
+                <span class="price">12,000<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="multiplier" data-price="15000" data-level="9">
+                <span>Level 9 Multiplier (4x)</span>
+                <span class="price">15,000<img src="GPU.png" alt="GPU"></span>
+            </div>
+            <div class="item-row" data-type="multiplier" data-price="20000" data-level="10">
+                <span>Level 10 Multiplier (4x)</span>
+                <span class="price">20,000<img src="GPU.png" alt="GPU"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="Cairo-image">
+        <img src="CAIROI.PNG" alt="Cairo">
+    </div> -->
+    
+    <script src="main.js"></script>
+</body>
+</html>
