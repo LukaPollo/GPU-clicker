@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabContents = document.querySelectorAll('.tab-content');
     const clicker = document.getElementById('clicker');
     const scoreSpan = document.getElementById('score');
-    const floatingNumbersContainer = document.getElementById('floating-numbers');
     const hatsContainer = document.getElementById('hats-container');
     const gpuIcon = 'GPU.png';
     let score = 0;
@@ -11,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoclickerLevel = 0;
     let autoclickerInterval;
 
-    // Tab functionality
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             tabs.forEach(t => t.classList.remove('active'));
@@ -22,13 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Set the default active tab
     const firstTab = tabs[0];
     firstTab.classList.add('active');
     const firstContentId = firstTab.getAttribute('data-content');
     document.getElementById(firstContentId).style.display = 'block';
 
-    // Clicker functionality
     clicker.addEventListener('click', () => {
         addGPUs(multiplier);
     });
@@ -67,37 +63,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function updateMultiplier() {
-        multiplier = autoclickerLevel + 1;
-    }
-
     function buyItem(level, type, price) {
-        // Check if the user has enough GPU balance
         if (score >= price) {
             score -= price;
             if (type === 'autoclicker') {
                 autoclickerLevel = level;
-                updateMultiplier();
-                if (autoclickerInterval) clearInterval(autoclickerInterval);
-                autoclickerInterval = setInterval(() => {
-                    addGPUs(autoclickerLevel);
-                }, 1000);
+                updateAutoclicker();
+            } else if (type === 'multiplier') {
+                multiplier = level + 1;
             }
             scoreSpan.textContent = score;
-            updateItemRowStatus(level, type); // Update item row status
+            updateItemRowStatus(level, type); 
         } else {
-            // Optionally: Provide feedback to the user if they don't have enough balance
             alert("Not enough GPU balance to purchase this item!");
         }
     }
 
+    function updateAutoclicker() {
+        if (autoclickerInterval) clearInterval(autoclickerInterval);
+        autoclickerInterval = setInterval(() => {
+            addGPUs(autoclickerLevel); // no multiplier here, only autoclickerLevel
+        }, 1000); 
+    }
+
     function updateItemRowStatus(level, type) {
-        // Find the item row based on type and level
         document.querySelectorAll('.item-row').forEach(item => {
             const itemLevel = parseInt(item.getAttribute('data-level'));
             const itemType = item.getAttribute('data-type');
             if (itemLevel === level && itemType === type) {
-                // Check if the item is already purchased
                 if (!item.classList.contains('purchased')) {
                     item.classList.add('purchased');
                 }
