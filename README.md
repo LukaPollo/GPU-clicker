@@ -1,7 +1,3 @@
 This website was made out of boredom.
-
-It has no future
-
-I am making it public so I can submit it to my school as a 'project'
-
-Erm actually,,, ill update it now that I dont know what to do
+Ill probably try my best to add the most amount of features.
+Dont even bother trying to understand the source code, I dont understand it either...
