@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreSpan = document.getElementById('score');
     const hatsContainer = document.getElementById('hats-container');
     const gpuIcon = 'GPU.png';
-    let score = 0;
+    let score = 10000; // Starting score (make sure to change back to 0 later)
     let multiplier = 1;
     let autoclickerLevel = 0;
     let autoclickerInterval;
+    let goldenGPUInterval;
+    let goldenGPULevel = 0;
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
@@ -40,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const gpu = document.createElement('img');
             gpu.src = gpuIcon;
             gpu.className = 'falling-gpu';
+            img.ondragstart = () => false; 
 
             const clickerRect = clicker.getBoundingClientRect();
             const randomX = clickerRect.left + Math.random() * clickerRect.width;
@@ -62,22 +65,72 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 0);
         }
     }
+    // Gets the purchased levels for each item type for the out of stock check
+    function getPurchasedLevels(type) {
+        const purchasedItems = document.querySelectorAll(`.item-row.purchased[data-type="${type}"]`);
+        const purchasedLevels = Array.from(purchasedItems).map(item => parseInt(item.getAttribute('data-level')));
+        return purchasedLevels;
+    }
+    
+    const purchasedGoldenGPULevels = getPurchasedLevels('golden-gpu');
+    const purchasedAutoclickerLevels = getPurchasedLevels('autoclicker');
+    const purchasedMultiplierLevels = getPurchasedLevels('multiplier');
 
     function buyItem(level, type, price) {
-        if (score >= price) {
-            score -= price;
-            if (type === 'autoclicker') {
-                autoclickerLevel = level;
-                updateAutoclicker();
-            } else if (type === 'multiplier') {
-                multiplier = level + 1;
-            }
-            scoreSpan.textContent = score;
-            updateItemRowStatus(level, type); 
-        } else {
-            alert("Not enough GPU balance to purchase this item!");
+        const item = document.querySelector(`.item-row[data-type="${type}"][data-level="${level}"]`);
+
+        if (item && item.classList.contains('purchased')) {
+            alert("Item already purchased!");
+            return;
         }
+
+        if (score < price) {
+            alert("Not enough score to buy this item!");
+            return; 
+        }
+
+        score -= price;
+        scoreSpan.textContent = score;
+
+        if (type === 'autoclicker') {
+            autoclickerLevel = level;
+            updateAutoclicker();
+        } else if (type === 'multiplier') {
+            multiplier = level + 1;
+        } else if (type === 'golden-gpu') {
+            goldenGPULevel = level;
+            updateGoldenGPU();
+        }
+
+        if (item) {
+            item.classList.add('purchased');
+        }
+
+        updateItemRowStatus(level, type);
     }
+
+    document.querySelectorAll('GPU.png').forEach(img => {
+        img.ondragstart = () => false;
+      });
+
+
+
+    /*function showAutoCursor() {
+        const cursor = document.getElementById('auto-cursor');
+        cursor.style.display = 'block';
+      
+        setInterval(() => {
+          cursor.classList.add('clicking');
+          setTimeout(() => cursor.classList.remove('clicking'), 100);
+        }, 1000);
+      }
+      
+      function simulateItemPurchase() {
+        showAutoCursor();
+      }*/  
+        // This is commented out because I havent implemented the auto cursor yet
+
+
 
     function updateAutoclicker() {
         if (autoclickerInterval) clearInterval(autoclickerInterval);
@@ -106,4 +159,41 @@ document.addEventListener('DOMContentLoaded', () => {
             buyItem(level, type, price);
         });
     });
+
+    function spawnGoldenGPU() {
+        const goldenGPU = document.createElement('img');
+        goldenGPU.src = 'GPU GOLDEN.png'; 
+        goldenGPU.className = 'golden-gpu';
+        goldenGPU.ondragstart = () => false; // Prevent dragging so it doesn't get stuck
+
+
+        const playableWidth = window.innerWidth * 0.65; 
+        const randomX = Math.random() * playableWidth;
+        goldenGPU.style.left = `${randomX}px`;
+
+        document.body.appendChild(goldenGPU);
+
+        goldenGPU.addEventListener('animationend', () => {
+            if (document.body.contains(goldenGPU)) {
+                document.body.removeChild(goldenGPU);
+            }
+        });
+
+        goldenGPU.addEventListener('click', () => {
+            addGPUs(goldenGPULevel * 10); 
+            //alert("Golden GPU collected!"); Just for testing purposes
+            if (document.body.contains(goldenGPU)) {
+                document.body.removeChild(goldenGPU);
+            }
+        });
+    }
+    
+    function updateGoldenGPU() {
+        if (goldenGPUInterval) clearInterval(goldenGPUInterval);
+
+        if (goldenGPULevel > 0) {
+            const spawnRate = Math.max(5000 - goldenGPULevel * 500, 1000); 
+            goldenGPUInterval = setInterval(spawnGoldenGPU, spawnRate);
+        }
+    }
 });

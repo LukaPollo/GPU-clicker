@@ -1,0 +1,15 @@
+-Add to you can disable/enable other powerups. So you can switch them around
+
+-Out of Stock
+
+-Autoclicker cursor icons
+
+-backend part of sign up/login
+
+-frontend part of sign up/login
+
+-add a watermark that links my github account (I really like the one prod has in his)
+
+-figure something out for the left side of the screen
+
+-comment more on my code
