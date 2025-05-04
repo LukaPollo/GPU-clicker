@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const gpu = document.createElement('img');
             gpu.src = gpuIcon;
             gpu.className = 'falling-gpu';
-            img.ondragstart = () => false; 
+            gpu.ondragstart = () => false;
 
             const clickerRect = clicker.getBoundingClientRect();
             const randomX = clickerRect.left + Math.random() * clickerRect.width;
