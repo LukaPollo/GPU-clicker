@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreSpan = document.getElementById('score');
     const hatsContainer = document.getElementById('hats-container');
     const gpuIcon = 'GPU.png';
-    let score = 100000; // Starting score for testing 
+    let score = 0;
     let multiplier = 1;
     let autoclickerLevel = 0;
     let autoclickerInterval;
