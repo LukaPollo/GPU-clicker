@@ -1,8 +1,6 @@
 -Add to you can disable/enable other powerups. So you can switch them around
 
--Out of Stock
-
--Autoclicker cursor icons
+-Autoclicker cursor icons -make different GPU images for every autoclick level
 
 -backend part of sign up/login
 
@@ -13,3 +11,5 @@
 -figure something out for the left side of the screen
 
 -comment more on my code
+
+-add information button (circle that opens an iframe in the middle of the screen while it shadows everything around it so basically explains everything)

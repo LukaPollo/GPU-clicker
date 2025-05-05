@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreSpan = document.getElementById('score');
     const hatsContainer = document.getElementById('hats-container');
     const gpuIcon = 'GPU.png';
-    let score = 0; 
+    let score = 100000; // Starting score for testing 
     let multiplier = 1;
     let autoclickerLevel = 0;
     let autoclickerInterval;
@@ -65,17 +65,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 0);
         }
     }
-    // Gets the purchased levels for each item type for the out of stock check
+
     function getPurchasedLevels(type) {
         const purchasedItems = document.querySelectorAll(`.item-row.purchased[data-type="${type}"]`);
         const purchasedLevels = Array.from(purchasedItems).map(item => parseInt(item.getAttribute('data-level')));
         return purchasedLevels;
     }
-    
     const purchasedGoldenGPULevels = getPurchasedLevels('golden-gpu');
     const purchasedAutoclickerLevels = getPurchasedLevels('autoclicker');
     const purchasedMultiplierLevels = getPurchasedLevels('multiplier');
 
+
+    const outOfStockItems = document.querySelectorAll('.item-row');
+    outOfStockItems.forEach(item => {
+        const level = parseInt(item.getAttribute('data-level'));
+        const type = item.getAttribute('data-type');
+
+        const purchasedLevels = getPurchasedLevels(type);
+        const highestPurchasedLevel = Math.max(...purchasedLevels, 0);
+
+        if (!item.classList.contains('purchased') && level < highestPurchasedLevel) {
+            item.classList.add('out-of-stock');
+            item.querySelector('.price').textContent = 'OUT OF STOCK'; 
+        }
+    });
+
+    
+    
     function buyItem(level, type, price) {
         const item = document.querySelector(`.item-row[data-type="${type}"][data-level="${level}"]`);
 
@@ -86,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (score < price) {
             alert("Not enough score to buy this item!");
-            return; 
+            return;
         }
 
         score -= price;
@@ -106,6 +122,14 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.add('purchased');
         }
 
+        document.querySelectorAll(`.item-row[data-type="${type}"]`).forEach(lowerItem => {
+            const lowerLevel = parseInt(lowerItem.getAttribute('data-level'));
+            if (lowerLevel < level && !lowerItem.classList.contains('purchased')) {
+                lowerItem.classList.add('out-of-stock');
+                lowerItem.querySelector('.price').textContent = 'OUT OF STOCK';
+            }
+        });
+
         updateItemRowStatus(level, type);
     }
 
@@ -113,29 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
         img.ondragstart = () => false;
       });
 
-
-
-    /*function showAutoCursor() {
-        const cursor = document.getElementById('auto-cursor');
-        cursor.style.display = 'block';
-      
-        setInterval(() => {
-          cursor.classList.add('clicking');
-          setTimeout(() => cursor.classList.remove('clicking'), 100);
-        }, 1000);
-      }
-      
-      function simulateItemPurchase() {
-        showAutoCursor();
-      }*/  
-        // This is commented out because I havent implemented the auto cursor yet
-
-
-
     function updateAutoclicker() {
         if (autoclickerInterval) clearInterval(autoclickerInterval);
         autoclickerInterval = setInterval(() => {
-            addGPUs(autoclickerLevel); // no multiplier here, only autoclickerLevel
+            addGPUs(autoclickerLevel); 
         }, 1000); 
     }
 
@@ -164,8 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const goldenGPU = document.createElement('img');
         goldenGPU.src = 'GPU GOLDEN.png'; 
         goldenGPU.className = 'golden-gpu';
-        goldenGPU.ondragstart = () => false; // Prevent dragging so it doesn't get stuck
-
+        goldenGPU.ondragstart = () => false; 
 
         const playableWidth = window.innerWidth * 0.65; 
         const randomX = Math.random() * playableWidth;
