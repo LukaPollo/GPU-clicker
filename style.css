@@ -13,7 +13,7 @@ body {
     min-height: 100vh;
     margin: 0;
     background-color: rgba(20, 20, 20, 1);
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     overflow: hidden;
 }
 
@@ -295,6 +295,29 @@ body {
     left: 80%;
 }
 
+.credits {
+    position: fixed; 
+    bottom: 7%; 
+    right: 13%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    background: rgba(40, 40, 40, 0.8); 
+    padding: 15px 20px;
+    border-radius: 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
+    transform: translate(50%, 50%);
+}
+
+#github-link {
+    display: flex; 
+    align-items: center; 
+    text-decoration: none; 
+    color: white; 
+    font-family: 'Inter', sans-serif; 
+    font-size: 1.2em; 
+}
 
 /* .Cairo-image {
     position: fixed;
