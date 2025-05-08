@@ -2,14 +2,16 @@
 
 -Autoclicker cursor icons -make different GPU images for every autoclick level
 
--backend part of sign up/login
+-Backend part of sign up/login
 
--frontend part of sign up/login
+-Frontend part of sign up/login
 
--add a watermark that links my github account (I really like the one prod has in his)
+-Add a watermark that links my github account (I really like the one prod has in his)
 
--figure something out for the left side of the screen
+-Figure something out for the left side of the screen
 
--comment more on my code
+-Comment more on my code
 
--add information button (circle that opens an iframe in the middle of the screen while it shadows everything around it so basically explains everything)
+-Add information button (circle that opens an iframe in the middle of the screen while it shadows everything around it so basically explains everything)
+
+-Maybe add a seperate score for Golden gpus and make it so an upgrade is worth a specific amount of normal and golden gpus
