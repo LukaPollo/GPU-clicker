@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     clicker.addEventListener('click', () => {
         addGPUs(multiplier);
+        audio.volume = 0.2;
         audio.play();
         audio.currentTime = 0;
     });
