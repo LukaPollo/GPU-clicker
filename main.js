@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoclickerInterval;
     let goldenGPUInterval;
     let goldenGPULevel = 0;
+    const audio = new Audio('Metallic_sound.wav');
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
@@ -29,6 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     clicker.addEventListener('click', () => {
         addGPUs(multiplier);
+        audio.play();
+        audio.currentTime = 0;
     });
 
     function addGPUs(amount) {
