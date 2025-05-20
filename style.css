@@ -95,23 +95,28 @@ body {
     100% { top: 100vh; opacity: 0; }
 }
 
-.GPU-clicker #clicker {
+.clicker-wrapper {
     position: fixed;
     left: 26%;
     top: 41%;
     width: 250px;
     height: auto;
+    animation: sway 3s ease-in-out infinite;
+}
+
+#clicker {
+    width: 100%;
+    height: auto;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-    animation: sway 2s ease-in-out infinite;
+    transition: transform 0.12s cubic-bezier(.4,0,.2,1);
 }
 
-.GPU-clicker #clicker:hover {
-    transform: scale(1.2);
+#clicker:hover {
+    transform: scale(0.94);
 }
 
-.GPU-clicker #clicker:active {
-    transform: scale(0.9);
+#clicker:active {
+    transform: scale(0.88);
 }
 
 #floating-numbers {
@@ -332,3 +337,22 @@ body {
     width: 150px
     ;
 } */
+
+
+#audioToggler {
+    position: fixed;
+    left: 66%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 90px;
+    cursor: pointer;
+    z-index: 100;
+}
+#audioToggler:hover {
+    transform: translateX(-50%) scale(0.93);
+}
+#audioToggler.active,
+#audioToggler.clicked {
+    transform: translateX(-50%) scale(0.88);
+}

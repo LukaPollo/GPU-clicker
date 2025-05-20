@@ -1,3 +1,28 @@
+<!--
+
+// Version 0.4            May/20/2025 UPDATED ROADMAP
+
+// This is a simple clicker game where you can buy upgrades to increase your score.
+// Features include:
+// - Click to earn points
+// - Buy upgrades to increase points per click
+// - Autoclicker that automatically clicks for you
+// - Background music and sound effects
+// - Responsive design
+// - Tabbed interface for different sections
+// - Out of stock items that become available as you progress if you skip levels
+// - Floating GPU animations
+// - Clickable items that can be purchased
+// - Audio toggler to mute/unmute background music
+// - GPU images that fall from the clicker button
+// - Golden GPU that spawns randomly and gives bonus points
+// - Multiplier that increases points per click
+//
+//GHOSTS OF TABOR PARODY GAME
+
+-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,11 +43,13 @@
             <h1><span id="score">0</span> <img id="gpu" src="GPU.png" alt="GPU " draggable="false"></h1>
         </div>
         <div class="GPU-clicker">
-            <img src="GPU.png" id="clicker" alt="GPU" draggable="false">
-
+            <div class="clicker-wrapper">
+                <img src="GPU.png" id="clicker" alt="GPU" draggable="false">
+            </div>
             <div id="floating-numbers"></div>
         </div>
     </div>
+    <img src="AudioIconINACTIVE.png" alt="audioToggler" id="audioToggler" draggable="false">
     <div id="hats-container"></div>
     <div class="sidebar right-sidebar">
 

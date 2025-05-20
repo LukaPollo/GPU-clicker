@@ -1,19 +1,15 @@
 -Add to you can disable/enable other powerups. So you can switch them around
 
--Autoclicker cursor icons -make different GPU images for every autoclick level
+-Autoclicker cursor icons -make different GPU images for every autoclick level (endgame with login and backend)
 
 -Backend part of sign up/login
 
 -Frontend part of sign up/login
 
--Add a watermark that links my github account (I really like the one prod has in his)
-
 -Figure something out for the left side of the screen
 
--Comment more on my code
+-Comment more on my code (oh hell nah twin)
 
 -Add information button (circle that opens an iframe in the middle of the screen while it shadows everything around it so basically explains everything)
 
 -Maybe add a seperate score for Golden gpus and make it so an upgrade is worth a specific amount of normal and golden gpus
-
--Add background music (Tabor intro music) with icon (OFF/ON image button)

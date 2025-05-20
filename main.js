@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreSpan = document.getElementById('score');
     const hatsContainer = document.getElementById('hats-container');
     const gpuIcon = 'GPU.png';
+    const backgroundMusic = new Audio('backgroundMusic.mp3'); 
+    const audioIconACTIVE = 'AudioIconACTIVE.png';
+    const audioIconINACTIVE = 'AudioIconINACTIVE.png';
     let score = 0;
     let multiplier = 1;
     let autoclickerLevel = 0;
@@ -34,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.play();
         audio.currentTime = 0;
     });
+        
 
     function addGPUs(amount) {
         score += amount;
@@ -204,4 +208,22 @@ document.addEventListener('DOMContentLoaded', () => {
             goldenGPUInterval = setInterval(spawnGoldenGPU, spawnRate);
         }
     }
+
+    // Background audio
+    backgroundMusic.paused;
+    backgroundMusic.volume = 0.1;
+    const audioToggler = document.getElementById('audioToggler');
+    audioToggler.src = audioIconINACTIVE;
+
+    audioToggler.addEventListener('click', () => {
+        if (backgroundMusic.paused) {
+            backgroundMusic.play().catch(() => {
+                console.error('Failed to play audio'); //testing
+            });
+            audioToggler.src = audioIconACTIVE;
+        } else {
+            backgroundMusic.pause();
+            audioToggler.src = audioIconINACTIVE;
+        }
+    });
 });
