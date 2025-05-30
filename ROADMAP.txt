@@ -13,3 +13,12 @@
 -Add information button (circle that opens an iframe in the middle of the screen while it shadows everything around it so basically explains everything)
 
 -Maybe add a seperate score for Golden gpus and make it so an upgrade is worth a specific amount of normal and golden gpus
+
+vatt suggestions:
+-Make GPU Feel more responsive (making it smaller each time you click but by less each time),
+
+-Make GPU Bigger,
+
+-MAke the Particles from the GPU more randomised, so they don't all end at the same place
+
+-Golden GPU popping noise and mini popping animation

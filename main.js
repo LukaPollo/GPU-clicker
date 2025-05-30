@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         score += amount;
         scoreSpan.textContent = score;
         createFloatingGPUs(amount);
+
     }
 
     function createFloatingGPUs(amount) {
@@ -51,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
             gpu.src = gpuIcon;
             gpu.className = 'falling-gpu';
             gpu.ondragstart = () => false;
+
+            gpu.style.pointerEvents = 'none';
 
             const clickerRect = clicker.getBoundingClientRect();
             const randomX = clickerRect.left + Math.random() * clickerRect.width;
@@ -212,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Background audio
     backgroundMusic.paused;
     backgroundMusic.volume = 0.1;
+    backgroundMusic.loop = true;
     const audioToggler = document.getElementById('audioToggler');
     audioToggler.src = audioIconINACTIVE;
 

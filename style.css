@@ -57,7 +57,7 @@ body {
 }
 
 #gpu {
-    height: 1.2em;
+    height: 1.2rem;
     vertical-align: middle;
 }
 
@@ -99,13 +99,13 @@ body {
     position: fixed;
     left: 26%;
     top: 41%;
-    width: 250px;
+    width: 400px;
     height: auto;
     animation: sway 3s ease-in-out infinite;
 }
 
 #clicker {
-    width: 100%;
+    width: 300px;
     height: auto;
     cursor: pointer;
     transition: transform 0.12s cubic-bezier(.4,0,.2,1);
